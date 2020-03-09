@@ -1,0 +1,82 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Le beautiful api docs",
+      "description": "Le beautiful api docs",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "tags": [
+      {
+        "name": "Url shortener",
+        "description": "API to shorten urls"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/shorten": {
+        "post": {
+          "description": "Shorten an url",
+          "parameters": [
+            {
+              "name": "url",
+              "in": "body",
+              "description": "Url to shorten",
+              "required": true
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New shortened url is created"
+            },
+            "400": {
+              "description": "Url is required"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/shorten/{id}": {
+        "get": {
+          "description": "Get original url from shortened url",
+          "parameters": [
+            {
+              "name": "shortId",
+              "in": "path",
+              "description": "Shortened url id to get original url",
+              "required": true
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Original url if found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      }
+    }
+  }
